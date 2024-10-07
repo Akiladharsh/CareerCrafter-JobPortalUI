@@ -1,0 +1,60 @@
+/* Import the font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Roboto:wght@400;700&display=swap');
+
+/* Main home section styling */
+.home {
+  position: relative;
+  height: 100vh;
+  background-image: url('C:/Users/Akil Adharsh/Downloads/JobPortalProject/JobPortalProject/src/assets/background-job-portal.jpg'); /* Use your background image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Add an overlay to darken the background */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Black overlay with opacity */
+}
+
+/* Content styling */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Styling for the CareerCrafter title */
+.content h1 {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 60px;
+  margin: 0;
+  color: #FFA500; /* Soft Orange */
+}
+
+/* Subtitle */
+.content p {
+  font-size: 20px;
+  margin: 10px 0 30px;
+  color: #F2F2F2; /* Soft Grey */
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 40px;
+  }
+
+  .content p {
+    font-size: 18px;
+  }
+}

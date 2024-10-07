@@ -1,0 +1,46 @@
+<div class="track-applications-container">
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Search by role..." 
+        [(ngModel)]="searchQuery" 
+        (input)="filterJobSeekers()" 
+      />
+    </div>
+  
+    <h3>Applications:</h3>
+  
+    <div 
+      class="job-seeker-card" 
+      *ngFor="let seeker of filteredJobSeekers" 
+      (click)="selectJobPosting(seeker.jobPostingId)"
+    >
+      <h4>{{ seeker.name }}</h4>
+      <p><strong>Phone:</strong> {{ seeker.phoneNo }}</p>
+      <p><strong>Email:</strong> {{ seeker.email }}</p>
+      <p><strong>Role Applied:</strong> {{ seeker.role }}</p>
+      
+      <button 
+        class="view-profile-btn" 
+        (click)="viewProfile(seeker.jobSeeker_Id); $event.stopPropagation();"
+      >
+        View Profile
+      </button>
+  
+      <button 
+        class="approve-btn" 
+        (click)="updateApplicationStatus(seeker.jobSeeker_Id, 'Approved'); $event.stopPropagation();"
+      >
+        Approve
+      </button>
+  
+      <button 
+        class="reject-btn" 
+        (click)="updateApplicationStatus(seeker.jobSeeker_Id, 'Rejected'); $event.stopPropagation();"
+      >
+        Reject
+      </button>
+    </div>
+  </div>
+  
+  

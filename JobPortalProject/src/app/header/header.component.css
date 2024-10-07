@@ -1,0 +1,90 @@
+/* Import Pine Berry font */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+
+/* General header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #008080; /* Teal */
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for elegance */
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Logo styling with Pine Berry font */
+.logo h1 {
+  margin: 0;
+  font-family: 'Pinyon Script', cursive; /* Pine Berry font */
+  font-size: 36px;
+  color: #ffffff; /* Soft Orange */
+  letter-spacing: 1px; /* Slight spacing between letters */
+}
+
+/* Styling for navigation buttons */
+.nav-buttons .btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #FFA500; /* Soft Orange border */
+  padding: 10px 20px;
+  margin-left: 15px;
+  cursor: pointer;
+  border-radius: 25px; /* Fully rounded button */
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Hover effect for all buttons */
+.nav-buttons .btn:hover {
+  background-color: #FFA500; /* Soft Orange background on hover */
+  color: white; /* White text */
+}
+
+/* Custom styling for Login button */
+.login-btn {
+  background-color: #FFA500;
+  color: white;
+  border: 2px solid #FFA500;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: #FFA500;
+  border-color: #FFA500;
+}
+
+/* Custom styling for Register button */
+.register-btn {
+  background-color: white;
+  color: #FFA500;
+  border: 2px solid #FFA500;
+}
+
+.register-btn:hover {
+  background-color: #FFA500;
+  color: white;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo h1 {
+    font-size: 28px;
+  }
+
+  .nav-buttons {
+    margin-top: 10px;
+  }
+
+  .nav-buttons .btn {
+    margin-left: 0;
+    margin-top: 5px;
+    width: 100%;
+  }
+}

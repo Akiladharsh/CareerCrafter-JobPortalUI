@@ -1,0 +1,156 @@
+/* Container for the entire employer home page */
+.employer-home-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  /* Top section styles */
+  .top-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .left-text h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Search bar styles */
+  .search-bar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Create job button */
+  .create-job-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-job-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Posted jobs section */
+  .posted-jobs h3 {
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .job-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .job-item h4 {
+    margin: 0 0 10px;
+    font-size: 20px;
+  }
+  
+  .job-item p {
+    margin: 5px 0;
+  }
+  
+  .delete-btn,
+  .edit-btn {
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Edit button styles with hover effect */
+  .edit-btn {
+    background-color: #ffc107;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  /* Edit form styles */
+  .edit-job-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .edit-job-form h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .edit-job-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .edit-job-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .edit-job-form button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  .edit-job-form button:first-of-type {
+    background-color: #28a745;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-job-form button:first-of-type:hover {
+    background-color: #218838;
+  }
+  
+  .edit-job-form button:last-of-type {
+    background-color: #dc3545;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-job-form button:last-of-type:hover {
+    background-color: #c82333;
+  }
+  

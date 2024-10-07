@@ -1,0 +1,30 @@
+<div class="register-form">
+  <h2>Sign Up</h2>
+  <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <div class="form-group user-type">
+      <label for="userType">Select User Type:</label>
+      <select id="userType" [(ngModel)]="userType" name="userType" required>
+        <option value="" disabled selected>Select your user type</option>
+        <option value="JobSeeker">Job Seeker</option>
+        <option value="Employer">Employer</option>
+      </select>
+    </div>
+
+    <!-- Error message display -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="!registerForm.valid">Register</button>
+  </form>
+</div>

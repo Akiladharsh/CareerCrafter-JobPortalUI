@@ -1,0 +1,60 @@
+.html
+<div *ngIf="jobSeeker; else loading">
+  <h2>{{ jobSeeker.name }}'s Profile</h2>
+  <p><strong>Name:</strong> {{ jobSeeker.name }}</p>
+  <p><strong>Phone:</strong> {{ jobSeeker.phoneNo }}</p>
+  <p><strong>Email:</strong> {{ jobSeeker.email }}</p>
+  <p><strong>Date of Birth:</strong> {{ jobSeeker.dob | date }}</p>
+  <p><strong>Temporary Address:</strong> {{ jobSeeker.tempAddress }}</p>
+  <p><strong>Permanent Address:</strong> {{ jobSeeker.permanentAddress }}</p>
+  <p><strong>Gender:</strong> {{ jobSeeker.gender }}</p>
+  <p><strong>Total Experience:</strong> {{ jobSeeker.totalExperienceInYears }} years</p>
+
+  <h3>Skills</h3>
+  <ul>
+    <li *ngFor="let skill of jobSeeker.skills">{{ skill }}</li>
+  </ul>
+
+  <h3>Certifications</h3>
+  <ul>
+    <li *ngFor="let certification of jobSeeker.certifications">{{ certification }}</li>
+  </ul>
+
+  <h3>Languages</h3>
+  <ul>
+    <li *ngFor="let language of jobSeeker.languages">{{ language }}</li>
+  </ul>
+
+  <h3>Projects</h3>
+  <ul>
+    <li *ngFor="let project of jobSeeker.projects">{{ project }}</li>
+  </ul>
+
+  <h3>Experience</h3>
+  <ul>
+    <li *ngFor="let exp of jobSeeker.experience">
+      {{ exp.previousCompanyName }} ({{ exp.fromYear }} - {{ exp.toYear }})
+    </li>
+  </ul>
+
+  <h3>Qualifications</h3>
+  <ul>
+    <li *ngFor="let qualification of jobSeeker.qualifications">
+      {{ qualification.qualification }} from {{ qualification.instituteName }} ({{ qualification.passedOutYear }})
+    </li>
+  </ul>
+
+  <h3>Resume</h3>
+  <div *ngIf="jobSeeker.resumes.length > 0">
+    <a [href]="jobSeeker.resumes[0].filePath" target="_blank">Download Resume</a>
+  </div>
+  <div *ngIf="jobSeeker.resumes.length === 0">
+    <p>No resume uploaded</p>
+  </div>
+</div>
+
+<!-- Display loading message when job seeker data is being fetched -->
+<ng-template #loading>
+  <p>Loading job seeker details...</p>
+</ng-template>
+

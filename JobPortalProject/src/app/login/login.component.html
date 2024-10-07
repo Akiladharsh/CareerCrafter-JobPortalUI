@@ -1,0 +1,29 @@
+<div class="login-form">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+
+    <div class="user-type">
+      <label for="userType">Select User Type:</label>
+      <select id="userType" [(ngModel)]="userType" name="userType" required>
+        <option value="JobSeeker">JobSeeker</option>
+        <option value="Employer">Employer</option>
+      </select>
+    </div>
+
+    <!-- Error message display -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+    <p></p>
+    <button type="button" (click)="goToRegister()" class="btn">Sign Up</button> <!-- Sign Up button -->
+  </form>
+
+  
+</div>

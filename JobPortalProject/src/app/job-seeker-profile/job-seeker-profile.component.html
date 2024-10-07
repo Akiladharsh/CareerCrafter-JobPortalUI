@@ -1,0 +1,120 @@
+<div class="profile-container">
+  <h2>Job Seeker Profile</h2>
+  <form [formGroup]="jobSeekerForm" (ngSubmit)="onSubmit()">
+    
+    <div>
+      <label>Name:</label>
+      <input formControlName="name" />
+    </div>
+    <div>
+      <label>Phone No:</label>
+      <input formControlName="phoneNo" />
+    </div>
+    <div>
+      <label>Email:</label>
+      <input formControlName="email" [disabled]="true" />
+    </div>
+    <div>
+      <label>Date of Birth:</label>
+      <input type="date" formControlName="dob" />
+    </div>
+    <div>
+      <label>Temporary Address:</label>
+      <input formControlName="tempAddress" />
+    </div>
+    <div>
+      <label>Permanent Address:</label>
+      <input formControlName="permanentAddress" />
+    </div>
+    <div>
+      <label>Gender:</label>
+      <input formControlName="gender" />
+    </div>
+    <div>
+      <label>Total Experience (in years):</label>
+      <input formControlName="totalExperienceInYears" />
+    </div>
+
+    <!-- Skills Section -->
+    <h3>Skills</h3>
+    <div formArrayName="jobSeekerSkills">
+      <div *ngFor="let skill of jobSeekerSkills.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="skills" placeholder="Enter Skill" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeSkill(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addSkill()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <h3>Certifications</h3>
+    <div formArrayName="jobSeekerCertifications">
+      <div *ngFor="let cert of jobSeekerCertifications.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="certifications" placeholder="Enter Certification" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeCertification(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addCertification()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages Section -->
+    <h3>Languages</h3>
+    <div formArrayName="jobSeekerLanguages">
+      <div *ngFor="let lang of jobSeekerLanguages.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="languages" placeholder="Enter Language" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeLanguage(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addLanguage()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <h3>Projects</h3>
+    <div formArrayName="jobSeekerProjects">
+      <div *ngFor="let proj of jobSeekerProjects.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="projects" placeholder="Enter Project" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeProject(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addProject()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Section -->
+    <h3>Experience</h3>
+    <div formArrayName="jobSeekerExperience">
+      <div *ngFor="let exp of jobSeekerExperience.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="previousCompanyName" placeholder="Previous Company Name" />
+        <input formControlName="fromYear" placeholder="From Year" />
+        <input formControlName="toYear" placeholder="To Year" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeExperience(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addExperience()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualifications Section -->
+    <h3>Qualifications</h3>
+    <div formArrayName="jobSeekerQualification">
+      <div *ngFor="let qual of jobSeekerQualification.controls; let i = index" [formGroupName]="i" class="add-remove-container">
+        <input formControlName="qualification" placeholder="Qualification" />
+        <input formControlName="instituteName" placeholder="Institute Name" />
+        <input formControlName="passedOutYear" placeholder="Passed Out Year" />
+        <div class="button-group">
+          <button type="button" class="remove-btn" (click)="removeQualification(i)">&#8722;</button>
+          <button type="button" class="add-btn" (click)="addQualification()">&#43;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit">Save</button>
+  </form>
+  
+  <!-- Success message -->
+  <p>{{ message }}</p>
+</div>

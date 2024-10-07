@@ -1,0 +1,109 @@
+/* Container for the job seeker profile */
+div {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Header styling */
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Paragraphs for details */
+  p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin: 8px 0;
+    text-align: left; /* Ensure left alignment */
+  }
+  
+  /* Ensure all strong elements (labels like Phone, Email) are aligned to the left */
+  strong {
+    display: inline-block;
+    width: 200px; /* You can adjust this width to ensure proper spacing */
+    color: #333;
+    text-align: left; /* Align labels to the left */
+  }
+  
+  /* Section headings */
+  h3 {
+    font-size: 22px;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left; /* Ensure headings are left-aligned */
+  }
+  
+  /* Unordered lists for sections like Skills, Certifications, etc. */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left; /* Ensure lists are left-aligned */
+  }
+  
+  ul li {
+    font-size: 16px;
+    color: #555;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Last list item does not need a border */
+  ul li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Download button for the resume */
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    div {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    h3 {
+      font-size: 20px;
+    }
+  
+    p, ul li {
+      font-size: 14px;
+    }
+  
+    a {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  
+    strong {
+      width: 150px; /* Reduce label width on smaller screens */
+    }
+  }
+  
+

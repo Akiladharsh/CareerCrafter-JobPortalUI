@@ -1,0 +1,168 @@
+/* General page layout */
+ul {
+    
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top right corner buttons */
+.top-right-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex; /* Use flexbox for side-by-side layout */
+  gap: 5px; /* Reduced space between buttons */
+}
+
+.top-right-buttons .btn {
+  background-color: #FFA500;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s; /* Added transition for transform */
+}
+
+.top-right-buttons .btn:hover {
+  background-color: #74747d;
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+/* Center the search bar */
+.search-container {
+  margin: 80px auto 30px; /* Centered with automatic left/right margins */
+  text-align: center;
+}
+
+.search-container input {
+  width: 60%;
+  max-width: 400px; /* Limit max width for smaller screens */
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s; /* Transition for border color */
+}
+
+.search-container input:focus {
+  border-color: #FFA500; /* Highlight border on focus */
+}
+
+/* Job listings container */
+.jobs-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.jobs-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Individual job items */
+.job-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start */
+  padding: 15px;
+  border-bottom: 1px solid #5c9d7a;
+  transition: background-color 0.3s;
+}
+
+.job-item:hover {
+  background-color: #f9f9f9;
+}
+
+/* Job details */
+.job-details {
+  flex: 1; /* Allow job details to take up remaining space */
+  margin-right: 15px; /* Space between job details and buttons */
+}
+
+.job-details h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.job-details p {
+  margin: 5px 0;
+  color: #555555;
+}
+
+/* Button container styling */
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: flex-end; /* Align buttons to the end */
+}
+
+/* Resume upload and Submit button styling */
+.resume-submit-container {
+  display: flex; /* Stack input and button side by side */
+  align-items: center; /* Center vertically */
+  gap: 5px; /* Reduced space between the file input and the submit button */
+}
+
+/* Apply button for each job */
+.apply-btn {
+  background-color: #FFA500;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Added transition for transform */
+}
+
+.apply-btn:hover {
+  background-color: #008080; /* Change to a darker green on hover */
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+/* Resume upload input styling */
+input[type="file"] {
+  margin: 5px 0; /* Spacing above and below the file input */
+}
+
+/* Submit application button */
+.submit-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Added transition for transform */
+}
+
+.submit-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+/* "No jobs found" styling */
+.no-jobs-found {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #999999; /* Gray text for the message */
+}
+
+.no-jobs-found img {
+  width: 50px;
+  margin-top: 10px;
+}

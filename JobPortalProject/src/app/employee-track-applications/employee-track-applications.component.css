@@ -1,0 +1,70 @@
+.track-applications-container {
+  padding: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.job-seeker-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-seeker-card h4 {
+  margin: 0;
+  color: #333;
+}
+
+.job-seeker-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.view-profile-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Space between View Profile and Approve */
+}
+
+.view-profile-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for Approve and Reject buttons */
+.approve-btn {
+  background-color: #28a745; /* Green */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Space between Approve and Reject */
+}
+
+.approve-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.reject-btn {
+  background-color: #dc3545; /* Red */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reject-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

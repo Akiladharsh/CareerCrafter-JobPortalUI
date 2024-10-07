@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="logo">
+    <h1>CareerCrafter - JobPortal</h1>
+  </div>
+
+  <!-- Display Login and Register buttons only on the home page -->
+  <div class="nav-buttons" *ngIf="isHomePage()">
+    <button class="btn login-btn" (click)="onLoginClick()">Login</button>
+    <button class="btn register-btn" (click)="navigateToRegister()">Register</button>
+  </div>
+
+ <!-- Hide buttons when on the Track Applications page -->
+<div class="nav-buttons" *ngIf="isEmployerHomePage() && !isTrackApplicationsPage()">
+  <button class="btn" (click)="trackApplications()">Track Applications</button>
+  <button class="btn" (click)="myProfile()">My Profile</button>
+</div>
+
+
+
+</header>

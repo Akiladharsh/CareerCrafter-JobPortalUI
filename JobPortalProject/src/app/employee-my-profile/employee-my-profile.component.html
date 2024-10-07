@@ -1,0 +1,32 @@
+<div class="profile-container">
+    <h2>My Profile</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="contactPersonName">Contact Person Name</label>
+        <input id="contactPersonName" formControlName="contactPersonName" type="text" placeholder="Enter Contact Person Name" />
+      </div>
+  
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input id="companyName" formControlName="companyName" type="text" placeholder="Enter Company Name" />
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input id="location" formControlName="location" type="text" placeholder="Enter Location" />
+      </div>
+  
+      <div class="form-group">
+        <label for="phoneNo">Phone Number</label>
+        <input id="phoneNo" formControlName="phoneNo" type="text" placeholder="Enter Phone Number" />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" placeholder="Enter Email" />
+      </div>
+  
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  
