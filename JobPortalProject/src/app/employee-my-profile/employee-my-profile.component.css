@@ -19,8 +19,15 @@
   }
   
   .submit-btn {
+    display: flex;
     padding: 0.7rem 1.5rem;
     background-color: #007bff;
+    border: none;
+
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     color: white;
     border: none;
     cursor: pointer;
@@ -29,4 +36,56 @@
   .submit-btn:hover {
     background-color: #0056b3;
   }
+  
+  .profile-container {
+  position: relative; /* Ensure that child elements with absolute positioning are relative to this container */
+}
+
+.logout {
+  position: absolute;
+  top: 20px; /* Adjust this value to move it vertically */
+  right: 20px; /* Adjust this value to move it horizontally */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.logout button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout button:hover {
+  background-color: #ff1a1a;
+}
+
+.logout button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   

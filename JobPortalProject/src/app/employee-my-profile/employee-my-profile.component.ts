@@ -2,11 +2,14 @@ import { Component, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../services/profile.service'; // Import the service
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { routes } from '../app.routes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee-my-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],  // Add ReactiveFormsModule to the imports array
+  imports: [ReactiveFormsModule,RouterModule,CommonModule],  // Add ReactiveFormsModule to the imports array
   templateUrl: './employee-my-profile.component.html',
   styleUrls: ['./employee-my-profile.component.css'],
 })
@@ -40,14 +43,15 @@ export class EmployeeMyProfileComponent implements OnInit {  // Implement OnInit
     if (this.employerId !== null) {
       this.profileService.getProfile(this.employerId).subscribe(
         (profileData) => {
-          // Populate the form with the fetched data
           this.profileForm.patchValue({
             contactPersonName: profileData.contactPersonName,
             companyName: profileData.companyName,
             location: profileData.location,
-            phoneNo: profileData.phoneNo,
+            phoneNo: profileData.phoneNo.replace(/\D/g, ''),
             email: profileData.email,
           });
+          // Mark all fields as touched so that they revalidate
+          this.profileForm.markAllAsTouched();
         },
         (error) => {
           console.error('Error fetching profile data', error);
@@ -55,6 +59,20 @@ export class EmployeeMyProfileComponent implements OnInit {  // Implement OnInit
         }
       );
     }
+  }
+  confirmLogout() {
+    const confirmed = window.confirm('Are you sure you want to log out?');
+    if (confirmed) {
+      this.logout();
+    }
+  }
+    
+  logout() {
+    localStorage.removeItem('jobSeekerId');
+    localStorage.removeItem('email'); 
+    localStorage.removeItem('jwtToken'); 
+    this // Clear jobSeekerId or any other session info
+    
   }
 
   // Function to handle form submission
@@ -78,6 +96,23 @@ export class EmployeeMyProfileComponent implements OnInit {  // Implement OnInit
     } else {
       alert('Please fill in all required fields correctly.');
     }
+
+    
   }
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 

@@ -1,5 +1,10 @@
 <div class="profile-container">
   <h2>Job Seeker Profile</h2>
+  
+  <div class = "logout">
+  <button type="button" (click)="confirmLogout()">Logout</button>
+  </div>
+
   <form [formGroup]="jobSeekerForm" (ngSubmit)="onSubmit()">
     
     <div>

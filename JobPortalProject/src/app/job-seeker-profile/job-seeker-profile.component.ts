@@ -257,4 +257,18 @@ export class JobSeekerProfileComponent implements OnInit {
     }));
   }
   removeQualification(index: number) { this.jobSeekerQualification.removeAt(index); }
+
+  confirmLogout() {
+    const confirmed = window.confirm('Are you sure you want to log out?');
+    if (confirmed) {
+      this.logout();
+    }
+  }
+  
+  logout() {
+    localStorage.removeItem('jobSeekerId');
+    localStorage.removeItem('email'); 
+    localStorage.removeItem('jwtToken');  // Clear jobSeekerId or any other session info
+    this.router.navigate(['']); // Redirect to the login page
+  }
 }
