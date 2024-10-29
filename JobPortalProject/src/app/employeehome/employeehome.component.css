@@ -31,7 +31,7 @@
 /* Create job button */
 .create-job-btn {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #008080;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -40,7 +40,7 @@
 }
 
 .create-job-btn:hover {
-  background-color: #218838;
+  background-color: #FFA500;
 }
 
 /* Totals section for job postings and applications */
