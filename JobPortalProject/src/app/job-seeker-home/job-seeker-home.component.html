@@ -1,6 +1,7 @@
 <div class="top-right-buttons">
+   <!-- Greeting message -->
   <button class="btn" (click)="navigateToProfile()">My Profile</button>
-  <button class="btn" (click)="navigateToTrack()">Track My Application</button>
+  <button class="btn" (click)="navigateToTrack()">Track My Application</button> 
 </div>
 
 <div class="search-container">
@@ -8,7 +9,8 @@
 </div>
 
 <div class="jobs-container">
-  <h2>Recent Jobs</h2>
+  <h2 class="greeting">Hello, {{ jobSeekerName }}</h2>
+  <h2> Look at the Recent Jobs</h2>
   
   <ul *ngIf="filteredJobs.length > 0">
     <li *ngFor="let job of filteredJobs" class="job-item">
@@ -19,14 +21,11 @@
       </div>
       
       <div class="button-container">
-        <!-- Apply button, visible only when the user hasn't clicked on apply for this job -->
         <button class="apply-btn" *ngIf="applyingJobId !== job.jobPostingId" (click)="applyForJob(job)">Apply Now</button>
         
-        <!-- Resume upload and Submit buttons, shown only when apply button is clicked for this specific job -->
         <div *ngIf="applyingJobId === job.jobPostingId" class="resume-submit-container">
           <input type="file" (change)="onResumeSelected($event)" />
           
-          <!-- Submit button enabled only when a resume is uploaded -->
           <button class="submit-btn" [disabled]="!isResumeUploaded" (click)="submitApplication(job)">
             Submit Application
           </button>
@@ -34,6 +33,7 @@
       </div>
     </li>
   </ul>
+  <p></p>
 
   <div *ngIf="filteredJobs.length === 0" class="no-jobs-found">
     <p>No jobs found</p>

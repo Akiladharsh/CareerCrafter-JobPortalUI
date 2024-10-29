@@ -22,6 +22,7 @@ export class EmployeehomeComponent implements OnInit {
   searchTerm: string = '';
   jobPostingsChart: any;
   dataFetched = { postings: false, applications: false };
+  contactPersonName: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -29,13 +30,14 @@ export class EmployeehomeComponent implements OnInit {
     this.getJobPostings();
     this.getTotalJobPostings();
     this.getTotalApplications();
+    this.getContactPersonName();
   }
 
   createCharts() {
     if (this.jobPostingsChart) {
       this.jobPostingsChart.destroy();
     }
-  
+
     this.jobPostingsChart = new Chart('jobPostingsChart', {
       type: 'bar',
       data: {
@@ -50,7 +52,7 @@ export class EmployeehomeComponent implements OnInit {
         responsive: true,
         plugins: {
           legend: {
-            display: false  // Hide the legend
+            display: false
           }
         },
         scales: {
@@ -71,7 +73,6 @@ export class EmployeehomeComponent implements OnInit {
       }
     });
   }
-  
 
   getJobPostings() {
     const url = 'https://localhost:7134/api/JobPostings/employer';
@@ -222,5 +223,28 @@ export class EmployeehomeComponent implements OnInit {
 
   trackApplications() {
     this.router.navigate(['/track-applications']);
+  }
+
+  getContactPersonName() {
+    const employerId = localStorage.getItem('employerId');
+    const url = `https://localhost:7134/api/Employer/${employerId}`;
+    const token = localStorage.getItem('jwtToken');
+
+    if (token) {
+      this.http.get<any>(url, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
+        (response) => {
+          this.contactPersonName = response.contactPersonName;
+        },
+        (error) => {
+          console.error('Error fetching contact person name:', error);
+        }
+      );
+    } else {
+      console.error('JWT token not found in local storage');
+    }
   }
 }

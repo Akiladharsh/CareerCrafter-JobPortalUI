@@ -31,7 +31,7 @@
 /* Create job button */
 .create-job-btn {
   padding: 10px 20px;
-  background-color: #008080;
+  background-color: #28a745;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -40,7 +40,7 @@
 }
 
 .create-job-btn:hover {
-  background-color: #FFA500;
+  background-color: #218838;
 }
 
 /* Totals section for job postings and applications */
@@ -52,6 +52,14 @@
 
 .total-item {
   text-align: center;
+}
+
+.contact-person-greeting {
+  font-size: 24px; /* adjust as needed */
+  font-weight: bold;
+  text-align: left;
+  color: #333; /* Adjust color as desired */
+  margin-bottom: 10px;
 }
 
 /* Canvas styling for charts */
@@ -171,4 +179,3 @@ canvas {
 .edit-job-form button:last-of-type:hover {
   background-color: #c82333;
 }
-
