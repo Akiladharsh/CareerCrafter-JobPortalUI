@@ -1,56 +1,65 @@
 <div class="employer-home-container">
-    <div class="top-section">
-      <div class="left-text">
-        <h2>Find Enthusiasts Who Want to Change the World!</h2>
-      </div>
-    </div>
-  
-    <div class="search-bar">
-      <input 
-        type="text" 
-        placeholder="Search your created jobs..." 
-        [(ngModel)]="searchTerm" 
-        (input)="onSearchChange()" 
-      />
-    </div>
-  
-    <div class="create-job-section">
-      <button class="create-job-btn" (click)="createJob()">Create New Job</button>
-    </div>
-  
-    <!-- Totals section for job postings and applications -->
-    <div class="totals-section">
-      <p><strong>Total Job Postings:</strong> {{ totalJobPostings }}</p>
-      <p><strong>Total Applications Received:</strong> {{ totalApplications }}</p>
-    </div>
-  
-    <div class="posted-jobs">
-      <h3>Your Posted Jobs</h3>
-  
-      <!-- Iterate over filteredJobs array instead of jobs -->
-      <div *ngFor="let job of filteredJobs" class="job-item">
-        <h4>{{ job.organisationName }}</h4>
-        <p><strong>Role:</strong> {{ job.role }}</p>
-        <p><strong>Description:</strong> {{ job.description }}</p>
-        <button class="delete-btn" (click)="deleteJob(job.jobPostingId)">Delete</button>
-        <button class="edit-btn" (click)="editJob(job)">Update</button>
-      </div>
-    </div>
-  
-    <!-- Edit form displayed when editMode is true -->
-    <div *ngIf="editMode" class="edit-job-form">
-      <h3>Edit Job Posting</h3>
-      <label for="organisationName">Organisation Name:</label>
-      <input id="organisationName" [(ngModel)]="currentJob.organisationName" />
-  
-      <label for="role">Role:</label>
-      <input id="role" [(ngModel)]="currentJob.role" />
-  
-      <label for="description">Description:</label>
-      <input id="description" [(ngModel)]="currentJob.description" />
-  
-      <button (click)="updateJob()">Save Changes</button>
-      <button (click)="editMode = false">Cancel</button>
+  <!-- Top Section with Heading -->
+  <div class="top-section">
+    <div class="left-text">
+      <h2>Find Enthusiasts Who Want to Change the World!</h2>
     </div>
   </div>
-  
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search your created jobs..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+    />
+  </div>
+
+  <!-- Create Job Button Section -->
+  <div class="create-job-section">
+    <button class="create-job-btn" (click)="createJob()">Create New Job</button>
+  </div>
+
+<!-- Totals Section for Job Postings and Applications -->
+<div class="totals-section">
+  <div class="total-item" style="text-align: center; margin: 20px 0;">
+    <!-- Centered and resized canvas element for medium size -->
+    <canvas id="jobPostingsChart" width="500" height="400"></canvas>
+    <p><strong>Total Job Postings:</strong> {{ totalJobPostings }}</p>
+    <p><strong>Total Applications Received:</strong> {{ totalApplications }}</p>
+  </div>
+</div>
+
+
+
+  <!-- Posted Jobs Section -->
+  <div class="posted-jobs">
+    <h3>Your Posted Jobs</h3>
+
+    <!-- Iterate over filteredJobs array instead of jobs -->
+    <div *ngFor="let job of filteredJobs" class="job-item">
+      <h4>{{ job.organisationName }}</h4>
+      <p><strong>Role:</strong> {{ job.role }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+      <button class="delete-btn" (click)="deleteJob(job.jobPostingId)">Delete</button>
+      <button class="edit-btn" (click)="editJob(job)">Update</button>
+    </div>
+  </div>
+
+  <!-- Edit Form Displayed When editMode is True -->
+  <div *ngIf="editMode" class="edit-job-form">
+    <h3>Edit Job Posting</h3>
+    <label for="organisationName">Organisation Name:</label>
+    <input id="organisationName" [(ngModel)]="currentJob.organisationName" />
+
+    <label for="role">Role:</label>
+    <input id="role" [(ngModel)]="currentJob.role" />
+
+    <label for="description">Description:</label>
+    <textarea id="description" [(ngModel)]="currentJob.description"></textarea>
+
+    <button (click)="updateJob()">Save Changes</button>
+    <button (click)="editMode = false">Cancel</button>
+  </div>
+</div>

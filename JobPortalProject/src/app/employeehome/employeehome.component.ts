@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-employeehome',
@@ -11,28 +12,70 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './employeehome.component.html',
   styleUrls: ['./employeehome.component.css']
 })
-
 export class EmployeehomeComponent implements OnInit {
-  jobs: any[] = [];  // Hold job postings from API
-  filteredJobs: any[] = [];  // Hold filtered job postings for display
-  editMode: boolean = false;  // Flag for displaying the edit form
-  currentJob: any = null;  // Hold job to be edited
-  totalJobPostings: number = 0;  // To store total job postings count
-  totalApplications: number = 0;  // To store total applications count
-  searchTerm: string = '';  // To hold the search term
+  jobs: any[] = [];
+  filteredJobs: any[] = [];
+  editMode: boolean = false;
+  currentJob: any = null;
+  totalJobPostings: number = 0;
+  totalApplications: number = 0;
+  searchTerm: string = '';
+  jobPostingsChart: any;
+  dataFetched = { postings: false, applications: false };
 
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    this.getJobPostings();  // Fetch job postings when component initializes
-    this.getTotalJobPostings();  // Fetch total job postings count
-    this.getTotalApplications();  // Fetch total applications count
+    this.getJobPostings();
+    this.getTotalJobPostings();
+    this.getTotalApplications();
   }
 
-  // Fetch job postings from API
+  createCharts() {
+    if (this.jobPostingsChart) {
+      this.jobPostingsChart.destroy();
+    }
+  
+    this.jobPostingsChart = new Chart('jobPostingsChart', {
+      type: 'bar',
+      data: {
+        labels: ['Your Job Postings', 'Total Applications Received'],
+        datasets: [{
+          label: 'Count',
+          data: [this.totalJobPostings, this.totalApplications],
+          backgroundColor: ['#42A5F5', '#66BB6A'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false  // Hide the legend
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Count'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Categories'
+            }
+          }
+        }
+      }
+    });
+  }
+  
+
   getJobPostings() {
     const url = 'https://localhost:7134/api/JobPostings/employer';
-    const token = localStorage.getItem('jwtToken');  // Retrieve the JWT token from local storage
+    const token = localStorage.getItem('jwtToken');
 
     if (token) {
       this.http.get<any[]>(url, {
@@ -42,7 +85,7 @@ export class EmployeehomeComponent implements OnInit {
       }).subscribe(
         (response) => {
           this.jobs = response;
-          this.filteredJobs = response; // Initialize filteredJobs with all jobs
+          this.filteredJobs = response;
         },
         (error) => {
           console.error('Error fetching job postings:', error);
@@ -53,13 +96,11 @@ export class EmployeehomeComponent implements OnInit {
     }
   }
 
-  // Fetch total number of job postings for the employer
   getTotalJobPostings() {
-    const employerId = localStorage.getItem('employerId');  // Retrieve employer ID from local storage
-    console.log('EmployerId:', employerId);  // Log EmployerId to ensure it's being retrieved
+    const employerId = localStorage.getItem('employerId');
     const url = `https://localhost:7134/api/JobPostings/employer/${employerId}/count`;
     const token = localStorage.getItem('jwtToken');
-  
+
     if (token) {
       this.http.get<any>(url, {
         headers: {
@@ -67,8 +108,9 @@ export class EmployeehomeComponent implements OnInit {
         }
       }).subscribe(
         (response) => {
-          console.log('Job postings count response:', response);  // Log API response
           this.totalJobPostings = response.jobPostingCount;
+          this.dataFetched.postings = true;
+          this.checkAndCreateChart();
         },
         (error) => {
           console.error('Error fetching job postings count:', error);
@@ -78,13 +120,12 @@ export class EmployeehomeComponent implements OnInit {
       console.error('JWT token not found in local storage');
     }
   }
-  
+
   getTotalApplications() {
     const employerId = localStorage.getItem('employerId');
-    console.log('EmployerId for applications:', employerId);  // Log EmployerId to ensure it's being retrieved
     const url = `https://localhost:7134/api/ApplicationStatus/CountApplications/${employerId}`;
     const token = localStorage.getItem('jwtToken');
-  
+
     if (token) {
       this.http.get<number>(url, {
         headers: {
@@ -92,8 +133,9 @@ export class EmployeehomeComponent implements OnInit {
         }
       }).subscribe(
         (response) => {
-          console.log('Applications count response:', response);  // Log API response
           this.totalApplications = response;
+          this.dataFetched.applications = true;
+          this.checkAndCreateChart();
         },
         (error) => {
           console.error('Error fetching applications count:', error);
@@ -104,19 +146,22 @@ export class EmployeehomeComponent implements OnInit {
     }
   }
 
-  // Filter job postings based on the search term
+  checkAndCreateChart() {
+    if (this.dataFetched.postings && this.dataFetched.applications) {
+      this.createCharts();
+    }
+  }
+
   filterJobs() {
-    this.filteredJobs = this.jobs.filter(job => 
+    this.filteredJobs = this.jobs.filter(job =>
       job.role.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
-  // Search input change event
   onSearchChange() {
     this.filterJobs();
   }
 
-  // Delete job posting
   deleteJob(jobPostingId: number) {
     const url = `https://localhost:7134/api/JobPostings/${jobPostingId}`;
     const token = localStorage.getItem('jwtToken');
@@ -130,7 +175,7 @@ export class EmployeehomeComponent implements OnInit {
         (response) => {
           console.log('Job deleted successfully', response);
           this.jobs = this.jobs.filter(job => job.jobPostingId !== jobPostingId);
-          this.filterJobs(); // Refresh the filtered jobs list
+          this.filterJobs();
         },
         (error) => {
           console.error('Error deleting job posting:', error);
@@ -141,13 +186,11 @@ export class EmployeehomeComponent implements OnInit {
     }
   }
 
-  // Activate edit mode and set the current job for editing
   editJob(job: any) {
     this.editMode = true;
-    this.currentJob = { ...job };  // Create a copy of the job to edit
+    this.currentJob = { ...job };
   }
 
-  // Update the job posting using PUT request
   updateJob() {
     const url = `https://localhost:7134/api/JobPostings/${this.currentJob.jobPostingId}`;
     const token = localStorage.getItem('jwtToken');
@@ -161,8 +204,8 @@ export class EmployeehomeComponent implements OnInit {
       }).subscribe(
         (response) => {
           console.log('Job updated successfully', response);
-          this.editMode = false;  // Exit edit mode after successful update
-          this.getJobPostings();  // Refresh job list
+          this.editMode = false;
+          this.getJobPostings();
         },
         (error) => {
           console.error('Error updating job posting:', error);
@@ -173,14 +216,11 @@ export class EmployeehomeComponent implements OnInit {
     }
   }
 
-  // Navigate to Create Job page
   createJob() {
     this.router.navigate(['/create-job']);
   }
 
-  // Navigate to track applications
   trackApplications() {
     this.router.navigate(['/track-applications']);
   }
 }
-
