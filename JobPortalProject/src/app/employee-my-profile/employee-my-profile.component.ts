@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-employee-my-profile',
@@ -17,8 +19,9 @@ import { CommonModule } from '@angular/common';
 export class EmployeeMyProfileComponent implements OnInit {  // Implement OnInit
   profileForm: FormGroup;
   employerId: number | null = null;
+  
 
-  constructor(private fb: FormBuilder, private profileService: ProfileService) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService,private router: Router) {
     // Fetch employerId from local storage
     const storedEmployerId = localStorage.getItem('employerId');
     if (storedEmployerId) {
@@ -68,10 +71,11 @@ export class EmployeeMyProfileComponent implements OnInit {  // Implement OnInit
   }
     
   logout() {
+    
     localStorage.removeItem('jobSeekerId');
     localStorage.removeItem('email'); 
     localStorage.removeItem('jwtToken'); 
-    this // Clear jobSeekerId or any other session info
+    this.router.navigate(['']);
     
   }
 
